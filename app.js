@@ -19,7 +19,15 @@ const	commentRoutes		= require("./routes/comments"),
 
 // seedDB();
 // PACKAGE CONFIG <make sure comes before the passport config, there might be potential errors, pay attention to the orders>
-mongoose.connect('mongodb://localhost:27017/yelp_camp', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://Omegalol:warren200801@clustertest.9vurh.mongodb.net/yelp_camp?retryWrites=true&w=majority', { 
+	useNewUrlParser: true, 
+	useUnifiedTopology: true,
+	useCreateIndex: true
+}).then(() => {
+	console.log("Connected to DB!")
+}).catch(err => {
+	console.log("ERROR", err.message)
+});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
