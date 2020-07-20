@@ -21,9 +21,10 @@ const	commentRoutes		= require("./routes/comments"),
 // PACKAGE CONFIG <make sure comes before the passport config, there might be potential errors, pay attention to the orders>
 
 // using environment variable (not necessary)
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true });
+const url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// mongoose.connect('mongodb+srv://Omegalol:warren200801@clustertest.9vurh.mongodb.net/yelp_camp?retryWrites=true&w=majority', { 
+// mongoose.connect('url', { 
 // 	useNewUrlParser: true, 
 // 	useUnifiedTopology: true,
 // 	useCreateIndex: true
